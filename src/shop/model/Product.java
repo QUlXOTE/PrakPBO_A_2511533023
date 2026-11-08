@@ -6,6 +6,7 @@ public abstract class Product {
     private final long price;
 
     protected Product(String sku, String name, long price){
+       // Product p = new Product("X", "X", 1000);
         if (sku == null || sku.isBlank()){
             throw new IllegalArgumentException("SKU must be blank");
         }

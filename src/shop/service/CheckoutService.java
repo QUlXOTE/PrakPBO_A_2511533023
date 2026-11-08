@@ -29,12 +29,17 @@ public class CheckoutService {
         return subtotal(items) + shipping.calculateCost(totalWeight(items));
     }
 
+    public long grandTotal(List<Product> items, ShippingService shipping, PaymentMethod payment) {
+        long totalCost = total(items, shipping);
+            return totalCost + payment.adminFee(totalCost);
+    }
+
     public boolean checkout(List<Product> items, ShippingService shipping, PaymentMethod payment) {
         if (items == null || items.isEmpty()) {
             return false;
         }
-        long cost = total(items, shipping);
-        return payment.pay(cost);
+        long finalAmount = grandTotal(items, shipping, payment);
+        return payment.pay(finalAmount);
     }
     public boolean refund(RefundablePayment payment, long amount){
         if (payment == null){

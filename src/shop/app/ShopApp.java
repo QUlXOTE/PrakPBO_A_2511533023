@@ -62,7 +62,7 @@ public class ShopApp {
         System.out.println("Refund e-wallet berhasil? "
                 + checkout.refund(wallet, ebook.getFinalPrice()));
         System.out.println("Saldo setelah refund: Rp" + wallet.getBalance());
-        // checkout.refund(transfer, 1_000); // compile error: BankTransferPayment is not RefundablePayment
+        //checkout.refund(transfer, 1_000); // compile error: BankTransferPayment is not RefundablePayment
 
         // L5: static nested, inner, and anonymous class
         Address address = new Address("Jl. Moh Hatta No. 10", "Padang", "25121");
