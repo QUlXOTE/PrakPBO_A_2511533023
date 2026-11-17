@@ -6,8 +6,14 @@ public final class Address {
     private final String postalCode;
 
     public Address(String street, String city, String postalCode) {
+<<<<<<< HEAD
         if (street == null || street.isBlank() || city == null || city.isBlank() || postalCode == null || postalCode.isBlank()) {
             throw new IllegalArgumentException("Address fields must not be blank");
+=======
+        if (street == null || street.isBlank() || city == null || city.isBlank()
+                || postalCode == null || postalCode.isBlank()) {
+            throw new IllegalArgumentException("Street, city and postal code are required");
+>>>>>>> 44d8345 (Praktikum P07 - Exception 2511533023 M.Fajar Fadhilul Zikri)
         }
         this.street = street;
         this.city = city;

@@ -38,14 +38,22 @@ public class Order {
         return new Receipt();
     }
 
+<<<<<<< HEAD
     // L5.b.1: Static nested class Line
+=======
+    /** One line of an order. Static: it does not need the Order object. */
+>>>>>>> 44d8345 (Praktikum P07 - Exception 2511533023 M.Fajar Fadhilul Zikri)
     public static class Line {
         private final Product product;
         private final int quantity;
 
         public Line(Product product, int quantity) {
             if (product == null || quantity <= 0) {
+<<<<<<< HEAD
                 throw new IllegalArgumentException("Invalid product or quantity");
+=======
+                throw new IllegalArgumentException("Product is required and quantity must be positive");
+>>>>>>> 44d8345 (Praktikum P07 - Exception 2511533023 M.Fajar Fadhilul Zikri)
             }
             this.product = product;
             this.quantity = quantity;
@@ -59,6 +67,7 @@ public class Order {
         }
     }
 
+<<<<<<< HEAD
     // L5.b.3: Inner class Receipt (non-static) yang membaca data Order luar via Order.this
     public class Receipt {
         public String toText() {
@@ -75,3 +84,21 @@ public class Order {
         }
     }
 }
+=======
+    /** Receipt of one specific order. Inner: it reads the outer Order. */
+    public class Receipt {
+        public String toText() {
+            StringBuilder text = new StringBuilder();
+            text.append("STRUK PESANAN ").append(Order.this.orderId).append('\n');
+            for (Line line : lines) {
+                text.append("- ").append(line.getProduct().getName())
+                    .append(" x").append(line.getQuantity())
+                    .append(" = Rp").append(line.subtotal()).append('\n');
+            }
+            text.append("Total barang: Rp").append(getItemsTotal()).append('\n');
+            text.append("Kirim ke: ").append(Order.this.shippingAddress);
+            return text.toString();
+        }
+    }
+}
+>>>>>>> 44d8345 (Praktikum P07 - Exception 2511533023 M.Fajar Fadhilul Zikri)

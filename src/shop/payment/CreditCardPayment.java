@@ -1,6 +1,10 @@
 package shop.payment;
 
+<<<<<<< HEAD
 import shop.StudentInfo;
+=======
+import shop.exception.InsufficientBalanceException;
+>>>>>>> 44d8345 (Praktikum P07 - Exception 2511533023 M.Fajar Fadhilul Zikri)
 
 public class CreditCardPayment implements RefundablePayment, InstallmentPayment {
     private final String cardHolder;
@@ -16,6 +20,7 @@ public class CreditCardPayment implements RefundablePayment, InstallmentPayment 
         }
         this.cardHolder = cardHolder;
         this.creditLimit = creditLimit;
+<<<<<<< HEAD
         this.usedCredit = 0;
     }
 
@@ -35,6 +40,25 @@ public class CreditCardPayment implements RefundablePayment, InstallmentPayment 
         }
         usedCredit += amount;
         return true;
+=======
+    }
+
+    @Override
+    public String getName() { return "Kartu Kredit (" + cardHolder + ")"; }
+
+    public long getUsedCredit() { return usedCredit; }
+
+    @Override
+    public void pay(long amount) throws InsufficientBalanceException {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+        long availableLimit = creditLimit - usedCredit;
+        if (amount > availableLimit) {
+            throw new InsufficientBalanceException(amount, availableLimit);
+        }
+        usedCredit += amount;
+>>>>>>> 44d8345 (Praktikum P07 - Exception 2511533023 M.Fajar Fadhilul Zikri)
     }
 
     @Override
@@ -47,6 +71,7 @@ public class CreditCardPayment implements RefundablePayment, InstallmentPayment 
     }
 
     @Override
+<<<<<<< HEAD
     public int maxInstallmentMonths() {
         return 12;
     }
@@ -61,3 +86,7 @@ public class CreditCardPayment implements RefundablePayment, InstallmentPayment 
         return RefundablePayment.super.policy() + "; " + InstallmentPayment.super.policy();
     }
 }
+=======
+    public int maxInstallmentMonths() { return 12; }
+}
+>>>>>>> 44d8345 (Praktikum P07 - Exception 2511533023 M.Fajar Fadhilul Zikri)

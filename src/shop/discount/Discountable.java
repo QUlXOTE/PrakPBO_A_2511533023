@@ -1,6 +1,10 @@
 package shop.discount;
 
 public interface Discountable {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 44d8345 (Praktikum P07 - Exception 2511533023 M.Fajar Fadhilul Zikri)
     int discountPercent(); // abstract: each class decides
 
     default long applyDiscount(long price) {
